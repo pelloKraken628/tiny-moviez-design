@@ -27,6 +27,7 @@ const LogoContainer = styled.div`
   font-weight: 800;
   color: #f9f9f9;
   text-align: center;
+  cursor: pointer;
 `;
 const LogoTop = styled.h1`
   font-size: 36px;
@@ -182,4 +183,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
