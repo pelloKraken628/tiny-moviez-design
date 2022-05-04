@@ -1,5 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import SearchIcon from "../tools/icons/main/SearchIcon";
+import FilterIcon from "../tools/icons/main/FilterIcon";
+import { keyframes } from "styled-components";
+
+const scale = keyframes`
+from {
+  transform: scale(0);
+}
+to {
+  transform: scale(1);
+}
+`;
 const Container = styled.div`
   flex: 3.68;
   max-width: 906px;
@@ -9,7 +21,7 @@ const Container = styled.div`
   padding-top: 64px;
   padding-bottom: 48px;
   row-gap: 60px;
-  color: #f9f9f9;
+  color: ${(props) => props.theme.white}; ;
 `;
 const Top = styled.div`
   display: flex;
@@ -31,31 +43,42 @@ const TopCategoryItem = styled.h2`
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
+  cursor: pointer;
+  position: relative;
+  transition: color 250ms ease-out;
+  ::after {
+    position: absolute;
+    animation: ${scale} 1000ms linear;
+    content: "";
+    transform: scale(0);
+    height: 4px;
+    width: calc(100% + 8px);
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 92px;
+  }
+  &:hover {
+    color: ${(props) => props.theme.sky};
+    ::after {
+      background-color: ${(props) => props.theme.sky};
+    }
+  }
 `;
 const SearchContainer = styled.form`
   position: relative;
   border-radius: 12px;
-  background-color: #21242d;
-  border: 1px solid rgba(249, 249, 249, 0.1);
+  background-color: ${(props) => props.theme.darkBlueLighter};
+  border: 1px solid
+    ${(props) => (props.active ? props.theme.sky : props.theme.darkBlueDarker)};
   width: 95%;
+  &:hover {
+    border: 1px solid ${(props) => props.theme.sky};
+  }
   max-width: 315px;
+  transition: border 350ms linear;
 `;
-const SearchIcon = styled.img`
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  left: 25px;
-  top: 50%;
-  transform: translateY(-50%);
-`;
-const FilterIcon = styled.img`
-  width: 20px;
-  height: 24px;
-  position: absolute;
-  top: 50%;
-  right: 25px;
-  transform: translateY(-50%);
-`;
+
 const SearchBar = styled.input`
   background-color: transparent;
   border: none;
@@ -68,7 +91,9 @@ const SearchBar = styled.input`
   padding: 16px 0;
   font-size: 18px;
   line-height: 24px;
+  transition: all 350ms ease-in;
   ::placeholder {
+    transition: all 350ms ease-in 700ms;
     font-size: 18px;
     line-height: 24px;
     font-family: "Lato", "sans-serif";
@@ -77,14 +102,16 @@ const SearchBar = styled.input`
     color: rgba(249, 249, 249, 0.67);
   }
   :focus {
+    color: ${(props) => props.theme.sky};
     ::placeholder {
-      color: #00b9ae;
+      color: ${(props) => props.theme.sky};
     }
   }
 `;
 
 const Main = () => {
-  const imgBaseUrl = process.env.PUBLIC_URL + "/assets/main/";
+  const [active, setActive] = useState(false);
+  const handleActivate = (val) => setActive(val);
   return (
     <Container>
       <Top>
@@ -93,10 +120,15 @@ const Main = () => {
           <TopCategoryItem>TV Shows</TopCategoryItem>
           <TopCategoryItem>Anime</TopCategoryItem>
         </TopCategory>
-        <SearchContainer>
-          <SearchIcon src={`${imgBaseUrl}/search.svg`} />
-          <FilterIcon src={`${imgBaseUrl}/filter.svg`} />
-          <SearchBar type="text" placeholder="Search" />
+        <SearchContainer active={active}>
+          <SearchIcon active={active} />
+          <FilterIcon active={active} />
+          <SearchBar
+            onFocus={() => handleActivate(true)}
+            onBlur={() => handleActivate(false)}
+            type="text"
+            placeholder="Search"
+          />
         </SearchContainer>
       </Top>
     </Container>
@@ -104,3 +136,4 @@ const Main = () => {
 };
 
 export default Main;
+

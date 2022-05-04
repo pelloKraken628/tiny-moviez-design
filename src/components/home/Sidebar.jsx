@@ -20,12 +20,13 @@ const Container = styled.header`
   display: flex;
   flex-wrap: wrap;
   row-gap: 60px;
+  max-height: 982px;
 `;
 const LogoContainer = styled.div`
   font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: 800;
-  color: #f9f9f9;
+  color: ${(props) => props.theme.white};
   text-align: center;
   cursor: pointer;
 `;
