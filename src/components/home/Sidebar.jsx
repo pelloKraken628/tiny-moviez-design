@@ -29,6 +29,13 @@ const LogoContainer = styled.div`
   color: ${(props) => props.theme.white};
   text-align: center;
   cursor: pointer;
+  transition: color 350ms cubic-bezier(0.6, -0.28, 0.74, 0.05);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  &:hover {
+    color: ${(props) => props.theme.sky};
+  }
 `;
 const LogoTop = styled.h1`
   font-size: 36px;
@@ -68,6 +75,22 @@ const MenuItem = styled.div`
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
+  & * {
+    transition: all 400ms linear;
+  }
+  &:hover {
+    & h3 {
+      color: ${(props) => props.theme.sky};
+    }
+    & path:not(path[fill-rule="evenodd"]),
+    & circle {
+      stroke: ${(props) => props.theme.sky};
+    }
+    & path[fill-rule="evenodd"],
+    & ellipse {
+      fill: ${(props) => props.theme.sky};
+    }
+  }
 `;
 const MenuItemTitle = styled.h3`
   font-family: "Lato SemiBold", "sans-serif";
@@ -184,3 +207,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+

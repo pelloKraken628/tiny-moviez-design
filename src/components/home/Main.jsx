@@ -1,17 +1,8 @@
-import React, { useState } from "react";
+import React, { useId, useMemo, useState } from "react";
 import styled from "styled-components";
-import SearchIcon from "../tools/icons/main/SearchIcon";
 import FilterIcon from "../tools/icons/main/FilterIcon";
-import { keyframes } from "styled-components";
+import SearchIcon from "../tools/icons/main/SearchIcon";
 
-const scale = keyframes`
-from {
-  transform: scale(0);
-}
-to {
-  transform: scale(1);
-}
-`;
 const Container = styled.div`
   flex: 3.68;
   max-width: 906px;
@@ -35,33 +26,38 @@ const TopCategory = styled.div`
   display: flex;
   justify-content: space-between;
   column-gap: 46px;
+  row-gap: 10px;
   flex-wrap: wrap;
   align-items: center;
 `;
 const TopCategoryItem = styled.h2`
+  height: 100%;
   font-family: "Lato", "sans-serif";
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
+  display: flex;
+  align-items: center;
   cursor: pointer;
   position: relative;
   transition: color 250ms ease-out;
   ::after {
+    transition: width 250ms ease-out;
     position: absolute;
-    animation: ${scale} 1000ms linear;
     content: "";
-    transform: scale(0);
+    width: ${(props) => (props.selected ? "calc( 100% + 8px)" : 0)};
     height: 4px;
-    width: calc(100% + 8px);
-    bottom: -14px;
+    bottom: 0px;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 92px;
+    background-color: ${(props) => props.theme.sky};
   }
+  color: ${(props) => (props.selected ? props.theme.sky : props.theme.white)};
   &:hover {
     color: ${(props) => props.theme.sky};
     ::after {
-      background-color: ${(props) => props.theme.sky};
+      width: calc(100% + 8px);
     }
   }
 `;
@@ -110,22 +106,33 @@ const SearchBar = styled.input`
 `;
 
 const Main = () => {
-  const [active, setActive] = useState(false);
-  const handleActivate = (val) => setActive(val);
+  const [searching, setSearching] = useState(false);
+  const [currentCategory, setCurrentCategory] = useState("");
+  const handleSearch = (value) => setSearching(value);
+  const handleChangeCategory = (categoryName) =>
+    setCurrentCategory(categoryName);
+  const categories = useMemo(() => ["Movies", "TV Shows", "Anime"], []);
+  const categoryId = useId();
   return (
     <Container>
       <Top>
         <TopCategory>
-          <TopCategoryItem>Movies</TopCategoryItem>
-          <TopCategoryItem>TV Shows</TopCategoryItem>
-          <TopCategoryItem>Anime</TopCategoryItem>
+          {categories.map((category, idx) => (
+            <TopCategoryItem
+              key={`${categoryId}${idx}`}
+              onClick={() => handleChangeCategory(category)}
+              selected={currentCategory === category}
+            >
+              {category}
+            </TopCategoryItem>
+          ))}
         </TopCategory>
-        <SearchContainer active={active}>
-          <SearchIcon active={active} />
-          <FilterIcon active={active} />
+        <SearchContainer active={searching}>
+          <SearchIcon active={searching} />
+          <FilterIcon active={searching} />
           <SearchBar
-            onFocus={() => handleActivate(true)}
-            onBlur={() => handleActivate(false)}
+            onFocus={() => handleSearch(true)}
+            onBlur={() => handleSearch(false)}
             type="text"
             placeholder="Search"
           />
@@ -136,4 +143,3 @@ const Main = () => {
 };
 
 export default Main;
-
