@@ -21,6 +21,7 @@ const Container = styled.header`
   flex-wrap: wrap;
   row-gap: 60px;
   max-height: 982px;
+  user-select: none;
 `;
 const LogoContainer = styled.div`
   font-family: "Open Sans", sans-serif;
@@ -75,8 +76,11 @@ const MenuItem = styled.div`
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
-  & * {
-    transition: all 400ms linear;
+  & path,
+  & ellipse,
+  & circle,
+  & h3 {
+    transition: color 400ms linear;
   }
   &:hover {
     & h3 {
@@ -207,4 +211,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-

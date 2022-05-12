@@ -1,7 +1,10 @@
 import React, { useId, useMemo, useState } from "react";
 import styled from "styled-components";
-import FilterIcon from "../tools/icons/main/FilterIcon";
-import SearchIcon from "../tools/icons/main/SearchIcon";
+import AddIcon from "../tools/icons/main/AddIcon";
+import FilterIcon from "../tools/icons/main/top/FilterIcon";
+import SearchIcon from "../tools/icons/main/top/SearchIcon";
+import ArrowLeftIcon from "../tools/icons/main/top/slider/ArrowLeftIcon";
+import ArrowRightIcon from "../tools/icons/main/top/slider/ArrowRightIcon";
 
 const Container = styled.div`
   flex: 3.68;
@@ -105,12 +108,132 @@ const SearchBar = styled.input`
   }
 `;
 
+const Slider = styled.div`
+  width: 85%;
+  max-width: 770px;
+  height: 35vh;
+  max-height: 350px;
+  background-image: linear-gradient(
+      0deg,
+      rgba(22, 24, 30, 0.5),
+      rgba(22, 24, 30, 0.5)
+    ),
+    url(${process.env.PUBLIC_URL}/assets/main/slider/theCrown.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 60px;
+  padding: 0 20px;
+  box-sizing: border-box;
+`;
+const SliderTitle = styled.h2`
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 100%;
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+  color: #f9f9f9;
+  width: calc(100% - 80px);
+  margin: 40px auto 0;
+`;
+const SliderBtnContainer = styled.div`
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+`;
+const SliderButton = styled.button`
+  width: 50px;
+  border: none;
+  background-color: ${(props) => props.theme.slider.darkTransparent};
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 0;
+  transition: background 350ms ease-in-out;
+  &:hover {
+    background-color: ${(props) => props.theme.sky};
+    & > svg > path {
+      stroke: ${({ theme }) => theme.dark};
+    }
+  }
+`;
+const SliderFooter = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+`;
+const SliderFooterBtn = styled.button`
+  border: none;
+  background: ${(props) => props.theme.slider.darkTransparent};
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 15px;
+  width: ${(props) => props.width}px;
+  height: 100%;
+  cursor: pointer;
+  transition: background-color 350ms ease-in;
+  &:hover {
+    background-color: ${(props) => props.theme.sky};
+    & > svg > path,
+    & > h3 {
+      color: ${(props) => props.theme.dark};
+      stroke: ${(props) => props.theme.dark};
+    }
+  }
+`;
+const SliderFooterBtnLabel = styled.h3`
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 100%;
+  transition: color 550ms ease-out;
+  color: ${(props) => props.theme.white};
+`;
+const SliderProgressContainer = styled.div`
+  width: 74px;
+  height: 26px;
+  background: ${(props) => props.theme.slider.darkTransparent};
+  backdrop-filter: blur(10px);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+`;
+const SliderProgressItem = styled.div`
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: ${({ selected, theme }) =>
+    selected ? theme.sky : theme.white};
+  cursor: pointer;
+  transition: all 550ms ease-out;
+  &:hover {
+    background-color: ${({ theme }) => theme.sky};
+  }
+`;
 const Main = () => {
   const [searching, setSearching] = useState(false);
   const [currentCategory, setCurrentCategory] = useState("");
   const handleSearch = (value) => setSearching(value);
   const handleChangeCategory = (categoryName) =>
     setCurrentCategory(categoryName);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const handleSlideManualy = (index) => {
+    setCurrentSlide(index);
+  };
+  const slideId = useId();
   const categories = useMemo(() => ["Movies", "TV Shows", "Anime"], []);
   const categoryId = useId();
   return (
@@ -138,8 +261,40 @@ const Main = () => {
           />
         </SearchContainer>
       </Top>
+      <Slider>
+        <SliderTitle>The Crown</SliderTitle>
+        <SliderBtnContainer>
+          <SliderButton>
+            <ArrowLeftIcon />
+          </SliderButton>
+          <SliderButton>
+            <ArrowRightIcon />
+          </SliderButton>
+        </SliderBtnContainer>
+        <SliderFooter>
+          <SliderFooterBtn width={160}>
+            <AddIcon />
+            <SliderFooterBtnLabel>Watchlist</SliderFooterBtnLabel>
+          </SliderFooterBtn>
+          <SliderProgressContainer>
+            {Array(3)
+              .fill(0)
+              .map((_, idx) => (
+                <SliderProgressItem
+                  key={slideId + idx}
+                  selected={idx === currentSlide}
+                  onClick={() => handleSlideManualy(idx)}
+                />
+              ))}
+          </SliderProgressContainer>
+          <SliderFooterBtn width={190}>
+            <SliderFooterBtnLabel>Watch Now</SliderFooterBtnLabel>
+          </SliderFooterBtn>
+        </SliderFooter>
+      </Slider>
     </Container>
   );
 };
 
 export default Main;
+
