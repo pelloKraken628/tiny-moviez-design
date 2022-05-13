@@ -113,21 +113,39 @@ const Slider = styled.div`
   max-width: 770px;
   height: 35vh;
   max-height: 350px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  row-gap: 60px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+`;
+const Wrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  transition: transform 1.5s ease;
+  position: absolute;
+  left: 0;
+  transform: translateX(${(props) => props.slideIndex * -100}%);
+`;
+const Slide = styled.div`
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
   background-image: linear-gradient(
       0deg,
       rgba(22, 24, 30, 0.5),
       rgba(22, 24, 30, 0.5)
     ),
-    url(${process.env.PUBLIC_URL}/assets/main/slider/theCrown.jpg);
+    url(${(props) => props.bgUrl});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  row-gap: 60px;
-  padding: 0 20px;
-  box-sizing: border-box;
 `;
 const SliderTitle = styled.h2`
   font-family: "Lato", sans-serif;
@@ -168,6 +186,7 @@ const SliderFooter = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 56px;
+  margin-bottom: 20px;
 `;
 const SliderFooterBtn = styled.button`
   border: none;
@@ -220,7 +239,7 @@ const SliderProgressItem = styled.div`
   cursor: pointer;
   transition: all 550ms ease-out;
   &:hover {
-    background-color: ${({ theme }) => theme.sky};
+    background-color: ${({ theme }) => theme.dark};
   }
 `;
 const Main = () => {
@@ -236,6 +255,9 @@ const Main = () => {
   const slideId = useId();
   const categories = useMemo(() => ["Movies", "TV Shows", "Anime"], []);
   const categoryId = useId();
+  const sliderItem = useMemo(() => ["theCrown", "theCrown", "theCrown"], []);
+  const sliderItemUrl = (name) =>
+    `${process.env.PUBLIC_URL}/assets/main/slider/${name}.jpg`;
   return (
     <Container>
       <Top>
@@ -262,12 +284,26 @@ const Main = () => {
         </SearchContainer>
       </Top>
       <Slider>
-        <SliderTitle>The Crown</SliderTitle>
+        <Wrapper slideIndex={currentSlide}>
+          {sliderItem.map((name, idx) => (
+            <Slide key={idx} bgUrl={sliderItemUrl(name)}>
+              <SliderTitle>The Crown</SliderTitle>
+            </Slide>
+          ))}
+        </Wrapper>
         <SliderBtnContainer>
-          <SliderButton>
+          <SliderButton
+            onClick={() =>
+              currentSlide > 0 && handleSlideManualy(currentSlide - 1)
+            }
+          >
             <ArrowLeftIcon />
           </SliderButton>
-          <SliderButton>
+          <SliderButton
+            onClick={() =>
+              currentSlide < 2 && handleSlideManualy(currentSlide + 1)
+            }
+          >
             <ArrowRightIcon />
           </SliderButton>
         </SliderBtnContainer>
