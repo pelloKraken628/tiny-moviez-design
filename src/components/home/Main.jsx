@@ -1,10 +1,11 @@
 import React, { useId, useMemo, useState } from "react";
 import styled from "styled-components";
-import AddIcon from "../tools/icons/main/AddIcon";
+import AddIcon from "../tools/icons/main/common/AddIcon";
 import FilterIcon from "../tools/icons/main/top/FilterIcon";
 import SearchIcon from "../tools/icons/main/top/SearchIcon";
-import ArrowLeftIcon from "../tools/icons/main/top/slider/ArrowLeftIcon";
-import ArrowRightIcon from "../tools/icons/main/top/slider/ArrowRightIcon";
+import ArrowLeftIcon from "../tools/icons/main/slider/ArrowLeftIcon";
+import ArrowRightIcon from "../tools/icons/main/slider/ArrowRightIcon";
+import MainFooter from "./main/MainFooter";
 
 const Container = styled.div`
   flex: 3.68;
@@ -69,7 +70,7 @@ const SearchContainer = styled.form`
   border-radius: 12px;
   background-color: ${(props) => props.theme.darkBlueLighter};
   border: 1px solid
-    ${(props) => (props.active ? props.theme.sky : props.theme.darkBlueDarker)};
+    ${(props) => (props.active ? props.theme.sky : props.theme.border)};
   width: 95%;
   &:hover {
     border: 1px solid ${(props) => props.theme.sky};
@@ -109,10 +110,9 @@ const SearchBar = styled.input`
 `;
 
 const Slider = styled.div`
-  width: 85%;
+  width: 95%;
   max-width: 770px;
-  height: 35vh;
-  max-height: 350px;
+  min-height: 350px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -122,6 +122,7 @@ const Slider = styled.div`
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
+  user-select: none;
 `;
 const Wrapper = styled.div`
   width: 100%;
@@ -168,7 +169,7 @@ const SliderBtnContainer = styled.div`
 const SliderButton = styled.button`
   width: 50px;
   border: none;
-  background-color: ${(props) => props.theme.slider.darkTransparent};
+  background-color: ${(props) => props.theme.lowOpBtn};
   backdrop-filter: blur(10px);
   border-radius: 15px;
   cursor: pointer;
@@ -190,7 +191,7 @@ const SliderFooter = styled.div`
 `;
 const SliderFooterBtn = styled.button`
   border: none;
-  background: ${(props) => props.theme.slider.darkTransparent};
+  background: ${(props) => props.theme.lowOpBtn};
   backdrop-filter: blur(10px);
   border-radius: 15px;
   display: flex;
@@ -211,7 +212,7 @@ const SliderFooterBtn = styled.button`
   }
 `;
 const SliderFooterBtnLabel = styled.h3`
-  font-family: "Lato";
+  font-family: "Lato", sans-serif;
   font-style: normal;
   font-weight: 800;
   font-size: 18px;
@@ -222,7 +223,7 @@ const SliderFooterBtnLabel = styled.h3`
 const SliderProgressContainer = styled.div`
   width: 74px;
   height: 26px;
-  background: ${(props) => props.theme.slider.darkTransparent};
+  background: ${(props) => props.theme.lowOpBtn};
   backdrop-filter: blur(10px);
   border-radius: 5px;
   display: flex;
@@ -242,6 +243,7 @@ const SliderProgressItem = styled.div`
     background-color: ${({ theme }) => theme.dark};
   }
 `;
+
 const Main = () => {
   const [searching, setSearching] = useState(false);
   const [currentCategory, setCurrentCategory] = useState("");
@@ -328,9 +330,9 @@ const Main = () => {
           </SliderFooterBtn>
         </SliderFooter>
       </Slider>
+      <MainFooter />
     </Container>
   );
 };
 
 export default Main;
-

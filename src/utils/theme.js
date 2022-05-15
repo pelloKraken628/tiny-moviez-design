@@ -7,8 +7,9 @@ const theme = {
   icons: {
     grey: "rgba(174, 175, 178, 1)",
   },
-  slider: {
-    darkTransparent: "rgba(249, 249, 249, 0.2)",
-  },
+  lowOpTitles: "rgba(249, 249, 249, 0.67)",
+  lowOpBtn: "rgba(249, 249, 249, 0.2)",
+  descriptions: "rgba(249, 249, 249, 0.7)",
+  border: "rgba(249, 249, 249, 0.1)",
 };
 export default theme;

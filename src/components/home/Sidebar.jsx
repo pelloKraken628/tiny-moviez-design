@@ -22,6 +22,7 @@ const Container = styled.header`
   row-gap: 60px;
   max-height: 982px;
   user-select: none;
+  border: 2px solid ${({ theme }) => theme.border};
 `;
 const LogoContainer = styled.div`
   font-family: "Open Sans", sans-serif;
