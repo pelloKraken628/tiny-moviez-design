@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Main from "../components/home/Main";
+import Right from "../components/home/Right";
 import Sidebar from "../components/home/Sidebar";
 import FontStyles from "../components/tools/FontStyles";
 
@@ -18,6 +19,7 @@ const Home = () => {
       <FontStyles />
       <Sidebar />
       <Main />
+      <Right />
     </Container>
   );
 };

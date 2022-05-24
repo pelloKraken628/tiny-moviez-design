@@ -13,7 +13,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 64px;
+  padding-top: 48px;
   padding-bottom: 48px;
   row-gap: 60px;
   color: ${(props) => props.theme.white}; ;
@@ -157,7 +157,7 @@ const SliderTitle = styled.h2`
   display: flex;
   align-items: center;
   text-transform: capitalize;
-  color: #f9f9f9;
+  color: ${({ theme }) => theme.white};
   width: calc(100% - 80px);
   margin: 40px auto 0;
 `;
