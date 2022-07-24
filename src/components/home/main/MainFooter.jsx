@@ -9,7 +9,7 @@ const Container = styled.div`
   user-select: none;
 `;
 const Title = styled.h2`
-  font-family: "Lato", sans-serif;
+  font-family: "Lato";
   font-style: normal;
   font-weight: 800;
   font-size: 30px;
@@ -48,7 +48,7 @@ const CardTop = styled.div`
   margin-left: 21px;
 `;
 const CardTitle = styled.h3`
-  font-family: "Lato", sans-serif;
+  font-family: "Lato";
   font-style: normal;
   font-weight: 800;
   font-size: 24px;
@@ -73,7 +73,7 @@ const CardBottomRow = styled.div`
   width: 100%;
   & > h4 {
     color: ${({ theme }) => theme.description};
-    font-family: "Lato", sans-serif;
+    font-family: "Lato";
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
@@ -85,7 +85,7 @@ const CardBottomRow = styled.div`
 const EpisodeInfo = styled.h4``;
 const EpisodeTitle = styled.h4``;
 const CardButton = styled.button`
-  font-family: "Lato", sans-serif;
+  font-family: "Lato";
   font-style: normal;
   font-weight: 800;
   font-size: 18px;
@@ -138,7 +138,7 @@ const MainFooter = () => {
   );
   const renderStars = (review) => {
     if (Number.isInteger(review)) {
-      return Array.from({ length: review }, () => <StarIcon />);
+      return Array.from({ length: review }, (_, idx) => <StarIcon key={idx} />);
     } else {
       const length = Math.floor(review);
       return [
@@ -148,6 +148,7 @@ const MainFooter = () => {
     }
   };
   const preUrl = (name) =>
+    // eslint-disable-next-line no-undef
     `${process.env.PUBLIC_URL}/assets/main/footer/${name}.jpg`;
   return (
     <Container>

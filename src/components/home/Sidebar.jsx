@@ -13,13 +13,13 @@ import CompletedIcon from "../tools/icons/sidebar/library/CompletedIcon";
 import SettingsIcon from "../tools/icons/sidebar/general/SettingsIcon";
 import LogOutIcon from "../tools/icons/sidebar/general/LogOutIcon";
 const Container = styled.header`
-  padding: 48px 0 48px 38px;
+  padding: 12px 0 48px 38px;
   max-width: 248px;
   flex: 1;
   background: #21242d;
   display: flex;
   flex-wrap: wrap;
-  row-gap: 60px;
+  row-gap: 45px;
   max-height: 982px;
   user-select: none;
   border: 2px solid ${({ theme }) => theme.border};
@@ -31,10 +31,11 @@ const LogoContainer = styled.div`
   color: ${(props) => props.theme.white};
   text-align: center;
   cursor: pointer;
-  transition: color 350ms cubic-bezier(0.6, -0.28, 0.74, 0.05);
+  transition: all 350ms cubic-bezier(0.6, -0.28, 0.74, 0.05);
   display: flex;
   justify-content: center;
   flex-direction: column;
+  margin-bottom: 35px;
   &:hover {
     color: ${(props) => props.theme.sky};
   }
@@ -56,7 +57,7 @@ const MenuContainer = styled.div`
   row-gap: 16px;
 `;
 const MenuTitle = styled.h2`
-  font-family: "Lato", "sans-serif";
+  font-family: "Lato";
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
@@ -97,8 +98,9 @@ const MenuItem = styled.div`
     }
   }
 `;
+// TODO : Possibile to use lato semibold on MenuItemTitle
 const MenuItemTitle = styled.h3`
-  font-family: "Lato SemiBold", "sans-serif";
+  font-family: "Lato";
   font-style: normal;
   font-weight: 600;
   font-size: 18px;

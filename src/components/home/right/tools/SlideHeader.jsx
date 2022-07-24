@@ -1,7 +1,9 @@
+import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
-import SlideLeftBtn from "../../tools/icons/right/SlideLeftBtn";
-import SlideRightBtn from "../../tools/icons/right/SlideRightBtn";
+import SlideLeftBtn from "../../../tools/icons/right/SlideLeftBtn";
+import SlideRightBtn from "../../../tools/icons/right/SlideRightBtn";
+
 const Container = styled.div``;
 const Top = styled.div`
   margin-bottom: 30px;
@@ -50,16 +52,17 @@ const SeeMoreTitle = styled.h3`
   font-size: 15px;
   color: ${({ theme }) => theme.lowOpTitles};
 `;
-const Watched = () => {
+const WatchedHeader = ({ onSlide, title }) => {
+  const handleSlide = (direction) => onSlide({ direction });
   return (
     <Container>
       <Top>
-        <Title>Continue</Title>
+        <Title>{title}</Title>
         <BtnContainer>
-          <Button>
+          <Button onClick={() => handleSlide("left")}>
             <SlideLeftBtn />
           </Button>
-          <Button>
+          <Button onClick={() => handleSlide("right")}>
             <SlideRightBtn />
           </Button>
         </BtnContainer>
@@ -74,4 +77,9 @@ const Watched = () => {
   );
 };
 
-export default Watched;
+WatchedHeader.propTypes = {
+  onSlide: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+};
+
+export default WatchedHeader;

@@ -29,7 +29,7 @@ const Notification = styled.div`
     }
   }
 `;
-const ProfileContainer = styled.h2`
+const ProfileContainer = styled.div`
   display: flex;
   align-items: center;
   column-gap: 11px;
@@ -50,12 +50,13 @@ const ExpandMore = styled.div`
     }
   }
 `;
+// eslint-disable-next-line no-undef
+const imgUrl = `${process.env.PUBLIC_URL}/assets/main/right/profilePicture.png`;
 const ProfileCard = styled.div`
   height: 56px;
   width: 56px;
   border: 15px;
-  background-image: url(${process.env
-    .PUBLIC_URL}/assets/main/right/profilePicture.png);
+  background-image: url(${imgUrl});
   background-size: cover;
   border-radius: 15px;
 `;

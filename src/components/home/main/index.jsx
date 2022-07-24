@@ -1,11 +1,11 @@
 import React, { useId, useMemo, useState } from "react";
 import styled from "styled-components";
-import AddIcon from "../tools/icons/main/common/AddIcon";
-import FilterIcon from "../tools/icons/main/top/FilterIcon";
-import SearchIcon from "../tools/icons/main/top/SearchIcon";
-import ArrowLeftIcon from "../tools/icons/main/slider/ArrowLeftIcon";
-import ArrowRightIcon from "../tools/icons/main/slider/ArrowRightIcon";
-import MainFooter from "./main/MainFooter";
+import AddIcon from "../../tools/icons/main/common/AddIcon";
+import FilterIcon from "../../tools/icons/main/top/FilterIcon";
+import SearchIcon from "../../tools/icons/main/top/SearchIcon";
+import ArrowLeftIcon from "../../tools/icons/main/slider/ArrowLeftIcon";
+import ArrowRightIcon from "../../tools/icons/main/slider/ArrowRightIcon";
+import MainFooter from "./MainFooter";
 
 const Container = styled.div`
   flex: 3.68;
@@ -13,9 +13,9 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 48px;
+  padding-top: 12px;
   padding-bottom: 48px;
-  row-gap: 60px;
+  row-gap: 45px;
   color: ${(props) => props.theme.white}; ;
 `;
 const Top = styled.div`
@@ -36,7 +36,7 @@ const TopCategory = styled.div`
 `;
 const TopCategoryItem = styled.h2`
   height: 100%;
-  font-family: "Lato", "sans-serif";
+  font-family: "Lato";
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
@@ -83,7 +83,7 @@ const SearchBar = styled.input`
   background-color: transparent;
   border: none;
   outline: none;
-  font-family: "Lato", "sans-serif";
+  font-family: "Lato";
   font-style: normal;
   font-weight: 500;
   margin-left: 20%;
@@ -96,7 +96,7 @@ const SearchBar = styled.input`
     transition: all 350ms ease-in 700ms;
     font-size: 18px;
     line-height: 24px;
-    font-family: "Lato", "sans-serif";
+    font-family: "Lato";
     font-style: normal;
     font-weight: 500;
     color: rgba(249, 249, 249, 0.67);
@@ -149,7 +149,7 @@ const Slide = styled.div`
   border-radius: 20px;
 `;
 const SliderTitle = styled.h2`
-  font-family: "Lato", sans-serif;
+  font-family: "Lato";
   font-style: normal;
   font-weight: 800;
   font-size: 48px;
@@ -212,7 +212,7 @@ const SliderFooterBtn = styled.button`
   }
 `;
 const SliderFooterBtnLabel = styled.h3`
-  font-family: "Lato", sans-serif;
+  font-family: "Lato";
   font-style: normal;
   font-weight: 800;
   font-size: 18px;

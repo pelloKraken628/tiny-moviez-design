@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import UserInfo from "./right/UserInfo";
-import Watched from "./right/Watched";
+import UserInfo from "./UserInfo";
+import Watched from "./watched";
+import TopRated from "./topRated";
+import Genre from "./genre";
 const Container = styled.div`
   max-width: 350px;
   flex: 1;
@@ -10,17 +12,18 @@ const Container = styled.div`
   flex-direction: column;
   background-color: ${({ theme }) => theme.darkBlueLighter};
   border: 2px solid rgba(249, 249, 249, 0.1);
-  padding-top: 48px;
-  row-gap: 60px;
+  padding-top: 12px;
+  row-gap: 50px;
   padding-left: 35px;
   box-sizing: border-box;
 `;
-
 const Right = () => {
   return (
     <Container>
       <UserInfo />
       <Watched />
+      <TopRated />
+      <Genre />
     </Container>
   );
 };
