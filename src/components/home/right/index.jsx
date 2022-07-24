@@ -12,8 +12,8 @@ const Container = styled.div`
   flex-direction: column;
   background-color: ${({ theme }) => theme.darkBlueLighter};
   border: 2px solid rgba(249, 249, 249, 0.1);
-  padding-top: 12px;
-  row-gap: 50px;
+  padding-top: 32px;
+  row-gap: 60px;
   padding-left: 35px;
   box-sizing: border-box;
 `;

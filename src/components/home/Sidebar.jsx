@@ -13,14 +13,13 @@ import CompletedIcon from "../tools/icons/sidebar/library/CompletedIcon";
 import SettingsIcon from "../tools/icons/sidebar/general/SettingsIcon";
 import LogOutIcon from "../tools/icons/sidebar/general/LogOutIcon";
 const Container = styled.header`
-  padding: 12px 0 48px 38px;
+  padding: 32px 0 48px 38px;
   max-width: 248px;
   flex: 1;
   background: #21242d;
   display: flex;
   flex-wrap: wrap;
-  row-gap: 45px;
-  max-height: 982px;
+  row-gap: 60px;
   user-select: none;
   border: 2px solid ${({ theme }) => theme.border};
 `;

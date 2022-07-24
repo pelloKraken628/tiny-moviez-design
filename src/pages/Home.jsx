@@ -9,7 +9,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   max-width: 100vw;
-  max-height: 100vh;
+  min-height: 100vh;
   box-sizing: border-box;
   background-color: ${(props) => props.theme.darkBlueDarker};
 `;

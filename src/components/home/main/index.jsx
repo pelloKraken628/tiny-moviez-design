@@ -13,9 +13,9 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 12px;
+  padding-top: 32px;
   padding-bottom: 48px;
-  row-gap: 45px;
+  row-gap: 60px;
   color: ${(props) => props.theme.white}; ;
 `;
 const Top = styled.div`
