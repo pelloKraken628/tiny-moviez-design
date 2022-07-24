@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/tiny-moviez-design/static/css/main.cf506294.css",
+    "main.js": "/tiny-moviez-design/static/js/main.cbf42e38.js",
+    "index.html": "/tiny-moviez-design/index.html",
+    "main.cf506294.css.map": "/tiny-moviez-design/static/css/main.cf506294.css.map",
+    "main.cbf42e38.js.map": "/tiny-moviez-design/static/js/main.cbf42e38.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cf506294.css",
+    "static/js/main.cbf42e38.js"
+  ]
+}
