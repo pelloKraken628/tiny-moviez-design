@@ -1,4 +1,10 @@
 # Movie Streaming Dashboard
+* [About the project](#about-the-project)
+* [Built With](#built-with)
+* [Authors](#authors)
+* [License](#license)
+* [Contact](#contact)
+
 ## About the project
 This project is a training for only front-end part, the goal is to improve FIGMA Design to React skills.  
 
