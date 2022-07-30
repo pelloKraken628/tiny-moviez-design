@@ -1,9 +1,15 @@
 # Movie Streaming Dashboard
-* [About the project](#about-the-project)
-* [Built With](#built-with)
-* [Authors](#authors)
-* [License](#license)
-* [Contact](#contact)
+<details>
+<summary>Table of contents</summary>
+<ol>
+  <li><a href="#about-the-project" alt="About the project">about-the-project</a></li>
+  <li><a href="#built-with" alt="Built With" >built-with</a></li>
+  <li><a href="#authors" alt="Authors" >authors</a></li>
+  <li><a href="#license" alt="License" >license</a></li>
+  <li><a href="#contact" alt="Contact" >contact</a></li>
+</ol>
+</details>
+
 
 ## About the project
 This project is a training for only front-end part, the goal is to improve FIGMA Design to React skills.  
@@ -34,3 +40,14 @@ This project is a training for only front-end part, the goal is to improve FIGMA
 [![outlook](https://img.shields.io/badge/Microsoft_Outlook-20232A?style=for-the-badge&logo=microsoft-outlook)](mailto:ibrahimk.dembele@outlook.fr)&nbsp;&nbsp;
 [![twitter](https://img.shields.io/badge/twitter-20232A?style=for-the-badge&logo=twitter)](https://twitter.com/Playmaker26_7)&nbsp;&nbsp;
 [![github](https://img.shields.io/badge/github-20232A?style=for-the-badge&logo=github)](https://github.com/idembele70)&nbsp;&nbsp;
+
+## Roadmap
+- [ ] Responsive
+  - [x] Desktop
+  - [ ] Tablet
+  - [ ] Mobile
+- [ ]Animation
+  - [x] Click animation
+  - [ ] Loading animation
+- [x] Deploy
+- [x] README
