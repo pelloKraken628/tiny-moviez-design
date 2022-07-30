@@ -46,7 +46,7 @@ This project is a training for only front-end part, the goal is to improve FIGMA
   - [x] Desktop
   - [ ] Tablet
   - [ ] Mobile
-- [ ]Animation
+- [ ] Animation
   - [x] Click animation
   - [ ] Loading animation
 - [x] Deploy
